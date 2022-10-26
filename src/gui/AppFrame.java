@@ -12,6 +12,7 @@ public class AppFrame extends JFrame
 	{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
+		this.setTitle("edword");
 		this.setResizable(false);
 		this.setJMenuBar(new AppMenuBar(appPanel));
 		this.setLayout(new GridLayout(1, 1));

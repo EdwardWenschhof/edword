@@ -14,8 +14,8 @@ public class FileMenuOption extends JMenu
 	{
 		this.setText("File");
 		this.add(new NewOption(appPanel));
-		this.add(new OpenFileOption());
-		this.add(new SaveOption());
+		this.add(new OpenFileOption(appPanel));
+		this.add(new SaveOption(appPanel));
 		this.add(new ExitOption());
 		
 	}

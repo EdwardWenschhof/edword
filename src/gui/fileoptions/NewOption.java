@@ -31,10 +31,7 @@ public class NewOption extends JMenuItem
 	
 	public void createNewFile()
 	{
-		JTextArea textArea = new JTextArea();
-		textArea.setPreferredSize(new Dimension(500, 500));
-		panel.remove(textArea);
-		panel.setTextArea(textArea);
+		panel.clearText();
 	}
 	
 }
