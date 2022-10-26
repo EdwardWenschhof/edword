@@ -5,9 +5,12 @@ import javax.swing.JMenuBar;
 public class AppMenuBar extends JMenuBar
 {
 	
+	private static FileMenuOption fmoption;
+	
 	public AppMenuBar(AppPanel appPanel)
 	{
-		this.add(new FileMenuOption(appPanel));
+		fmoption = new FileMenuOption(appPanel);
+		this.add(fmoption);
 	}
 	
 }

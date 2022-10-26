@@ -1,15 +1,14 @@
 package gui.fileoptions;
 
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JMenuItem;
-import javax.swing.JTextArea;
 
+import document.Document;
 import gui.AppPanel;
 
-public class NewOption extends JMenuItem
+public class NewOption extends JMenuItem implements ActionListener
 {
 	
 	AppPanel panel;
@@ -18,20 +17,15 @@ public class NewOption extends JMenuItem
 	{
 		this.panel = panel;
 		this.setText("New");
-		this.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				createNewFile();
-			}
-			
-		});
+		this.addActionListener(this);
 	}
-	
-	public void createNewFile()
+
+	@Override
+	public void actionPerformed(ActionEvent e)
 	{
-		panel.clearText();
+		Document doc = new Document(panel);
+		doc.createGUIDoc();
+		
 	}
 	
 }
