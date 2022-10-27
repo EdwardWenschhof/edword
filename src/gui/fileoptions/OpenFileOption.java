@@ -32,16 +32,11 @@ public class OpenFileOption extends JMenuItem implements ActionListener
 		try
 		{
 			OpenFunction.open();
-		} catch (FileNotFoundException e1)
-		{
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
 		} catch (IOException e1)
 		{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
 	}
 
 }

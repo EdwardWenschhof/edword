@@ -31,7 +31,7 @@ public class SaveFunction
 			fileWriter.write(document.getContent());
 			fileWriter.close();
 		
-		
+		document.setSaved(true);
 	}
 	
 }

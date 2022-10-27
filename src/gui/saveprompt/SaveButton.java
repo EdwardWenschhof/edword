@@ -13,33 +13,26 @@ import functions.SaveFunction;
 import gui.AppFrame;
 import gui.AppPanel;
 
-public class SaveButton extends JButton
+public class SaveButton extends JButton implements ActionListener
 {
-
-	JFileChooser jfc;
+	
+	private AppPanel appPanel;
+	private SavePrompt savePrompt;
 	
 	public SaveButton(AppPanel appPanel, SavePrompt savePrompt)
 	{
+		this.appPanel = appPanel;
+		this.savePrompt = savePrompt;
 		this.setText("Save");
 		this.setPreferredSize(new Dimension(100, 50));
-		this.addActionListener(new ActionListener() {
+		this.addActionListener(this);
+	}
 
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				try
-				{
-					AppFrame.getDocument().save();
-				} catch (IOException e1)
-				{
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				savePrompt.dispose();
-					
-			}
-			
-		});
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+		savePrompt.setDecision(true);
+		savePrompt.close();
 	}
 	
 }

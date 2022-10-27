@@ -20,6 +20,7 @@ public class Document
 	private JTextArea guiRep = new JTextArea();
 	private AppPanel parent;
 	private String filename;
+	private boolean saved;
 	
 	public Document(File file, String content, AppPanel parent)
 	{
@@ -75,7 +76,18 @@ public class Document
 	
 	public void save() throws IOException
 	{
+		saved = true;
 		SaveFunction.save(this);
+	}
+	
+	public boolean getSaved()
+	{
+		return saved;
+	}
+	
+	public void setSaved(boolean saved)
+	{
+		this.saved = saved;
 	}
 
 	public String getContent()

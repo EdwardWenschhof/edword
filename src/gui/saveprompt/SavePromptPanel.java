@@ -15,7 +15,7 @@ public class SavePromptPanel extends JPanel
 		this.setLayout(new FlowLayout());
 		this.add(new SavePromptLabel());
 		this.add(new SaveButton(appPanel, savePrompt));
-		this.add(new DontSaveButton());
+		this.add(new DontSaveButton(appPanel, savePrompt));
 		this.setPreferredSize(new Dimension(400, 100));
 	}
 

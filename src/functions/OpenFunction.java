@@ -21,9 +21,10 @@ public class OpenFunction
 	 */
 	public static /*String*/ void open() throws IOException
 	{
+
 		if(AppFrame.getDocument() != null)
 		{
-			AppFrame.getDocument().closeDoc();
+			SaveWithPromptFunction.saveWithPrompt(AppFrame.getDocument());
 		}
 		
 		JFileChooser jfc = new JFileChooser();
