@@ -1,12 +1,15 @@
 package gui;
 
 import javax.swing.JFrame;
+
+import document.Document;
+
 import java.awt.GridLayout;
 
 public class AppFrame extends JFrame
 {
-	
-	AppPanel appPanel = new AppPanel();
+	private static Document currentDoc;
+	private static AppPanel appPanel = new AppPanel();
 	
 	public AppFrame() 
 	{
@@ -19,5 +22,20 @@ public class AppFrame extends JFrame
 		this.add(appPanel);
 		this.pack();
 		this.setLocationRelativeTo(null);
+	}
+	
+	public static AppPanel getPanel()
+	{
+		return appPanel;
+	}
+	
+	public static void setDocument(Document doc)
+	{
+		currentDoc = doc;
+	}
+	
+	public static Document getDocument()
+	{
+		return currentDoc;
 	}
 }

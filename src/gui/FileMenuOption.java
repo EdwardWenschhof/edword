@@ -14,6 +14,10 @@ public class FileMenuOption extends JMenu
 	private static OpenFileOption openOption;
 	private static SaveOption saveOption;
 	private static ExitOption exitOption;
+	
+	private static FileMenuOption fmoption;
+	
+	private AppPanel appPanel;
 
 	private FileMenuOption(AppPanel appPanel)
 	{
@@ -29,9 +33,18 @@ public class FileMenuOption extends JMenu
 		
 	}
 	
-	public FileMenuOption getFileMenuOption(AppPanel appPanel)
+	public static FileMenuOption getFileMenuOption(AppPanel appPanel)
 	{
-		
+		if(fmoption == null)
+		{
+			fmoption = new FileMenuOption(appPanel);
+		}
+		return fmoption;
+	}
+	
+	public AppPanel getParentPanel()
+	{
+		return appPanel;
 	}
 	
 }

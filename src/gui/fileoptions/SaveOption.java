@@ -9,40 +9,33 @@ import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 
 import functions.SaveFunction;
+import gui.AppFrame;
 import gui.AppPanel;
 import gui.saveprompt.SavePrompt;
 
-public class SaveOption extends JMenuItem
+public class SaveOption extends JMenuItem implements ActionListener
 {
-
-	JFileChooser jfc;
+	private AppPanel appPanel;
+	private JFileChooser jfc;
 	
 	public SaveOption(AppPanel appPanel)
 	{
+		this.appPanel = appPanel;
 		this.setText("Save");
-		this.addActionListener(new ActionListener() {
+		this.addActionListener(this);
+	}
 
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				jfc = new JFileChooser();
-				jfc.showSaveDialog(appPanel);
-				File file = jfc.getSelectedFile();
-				String text = appPanel.getText();
-				if(file != null && text != null)
-				{
-					try
-					{
-						SaveFunction.save(text, file);
-					} catch (IOException e1)
-					{
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}
-			}
-			
-		});
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+		try
+		{
+			AppFrame.getDocument().save();
+		} catch (IOException e1)
+		{
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 	
 }

@@ -1,5 +1,6 @@
 package document;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,16 +9,17 @@ import java.io.IOException;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import functions.ReadFunction;
+import functions.OpenFunction;
 import functions.SaveFunction;
 import gui.AppPanel;
 
 public class Document
 {
 	private File file;
-	private String content;
+	private String content = "";
 	private JTextArea guiRep = new JTextArea();
 	private AppPanel parent;
+	private String filename;
 	
 	public Document(File file, String content, AppPanel parent)
 	{
@@ -33,16 +35,32 @@ public class Document
 	{
 		this.parent = parent;
 	}
-	
-	public void createGUIDoc()
+
+	public void showDocument()
 	{
-		parent.addDocument(this);
+		parent.setTextArea(guiRep);
+		parent.add(guiRep);
+		parent.revalidate();
+		parent.setText(content);
 	}
 	
+	/**
+	 * NEEDS FIXED
+	 * @throws IOException
+	 */
 	public void closeDoc() throws IOException
 	{
-		save(content);
-		parent.remove(guiRep);	
+		save();
+		if(parent.getTextArea() != null)
+		{
+			Component[] components = parent.getComponents();
+			for(Component c : components)
+			{
+				if(c instanceof JTextArea)
+					parent.remove(c);
+			}
+		}
+
 	}
 	
 	public void attachFile(File file)
@@ -55,17 +73,11 @@ public class Document
 		content = newContent;
 	}
 	
-	public void save(String string) throws IOException
+	public void save() throws IOException
 	{
-		SaveFunction.save(string, file);
+		SaveFunction.save(this);
 	}
-	
-	public String read() throws FileNotFoundException
-	{
-		String contents = ReadFunction.read(file);
-		return contents;
-	}
-	
+
 	public String getContent()
 	{
 		return content;
@@ -85,5 +97,15 @@ public class Document
 	{
 		return guiRep;
 	}
+	
+	public String getFilename()
+	{
+		return filename;
+	}
 
+	public void setFilename(String filename)
+	{
+		this.filename = filename;
+	}
+	
 }

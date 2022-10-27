@@ -9,7 +9,7 @@ public class AppMenuBar extends JMenuBar
 	
 	public AppMenuBar(AppPanel appPanel)
 	{
-		fmoption = new FileMenuOption(appPanel);
+		fmoption = FileMenuOption.getFileMenuOption(appPanel);
 		this.add(fmoption);
 	}
 	

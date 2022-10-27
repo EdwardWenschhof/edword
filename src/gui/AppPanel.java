@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import document.Document;
+import functions.NewFunction;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -20,30 +21,14 @@ public class AppPanel extends JPanel
 		this.setPreferredSize(new Dimension(500, 500));
 	}
 	
-	public void addDocument(Document document)
+	public JTextArea getTextArea()
 	{
-
-		if(area != null)
-		{
-			Component[] components = this.getComponents();
-			for(Component c : components)
-			{
-				if(c instanceof JTextArea)
-					this.remove(c);
-			}
-			this.revalidate();
-			JTextArea newArea = document.getTextArea();
-			area = newArea;
-			this.add(newArea);
-		}
-			
-		else 
-		{
-			JTextArea newArea = document.getTextArea();
-			area = newArea;
-			this.add(newArea);
-		}
-		
+		return area;
+	}
+	
+	public void setTextArea(JTextArea area)
+	{
+		this.area = area;
 	}
 	
 	public void setText(String text)

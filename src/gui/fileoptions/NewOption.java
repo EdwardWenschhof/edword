@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JMenuItem;
 
 import document.Document;
+import functions.NewFunction;
+import gui.AppFrame;
 import gui.AppPanel;
 
 public class NewOption extends JMenuItem implements ActionListener
@@ -23,9 +25,8 @@ public class NewOption extends JMenuItem implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		Document doc = new Document(panel);
-		doc.createGUIDoc();
-		
+		Document currentDoc = NewFunction.newDocument(panel);
+		AppFrame.setDocument(currentDoc);
 	}
 	
 }
